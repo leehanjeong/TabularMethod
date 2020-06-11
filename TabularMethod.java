@@ -32,7 +32,7 @@ public class TabularMethod {
 		int[] m = {1}; //같은 2차원 배열에 들어있는 배열이 minterm의 이진수값을 나타냄을 알려줌
 		int[] d = {0}; //같은 2차원 배열에 들어있는 배열이 dontcare의 이진수값을 나타냄을 알려줌
 		int[] numOfOne = new int[1];
-		binTerms = new int[numMinterms + numDontcares][3][]; //[[minterm인지 dontcare인지를 나타내는 0 또는 1의 값,[이진수],1의 개수]]
+		binTerms = new int[numMinterms + numDontcares][3][]; //[[m or d, bin, numOfOne]]
 		
 		for(int i=0;i<numMinterms;i++) {
 			int[] bin = new int[4]; //4 variables
