@@ -13,7 +13,7 @@ public class TabularMethod {
 		numMinterms = input.nextInt();
 		minterms = new int[numMinterms];
 		
-		System.out.println("minterm을 입력하세요: ");
+		System.out.println("minterm(0~15 사이)을 입력하세요: ");
 		for(int i=0;i<numMinterms;i++) {
 			minterms[i] = input.nextInt();
 		}
@@ -22,7 +22,7 @@ public class TabularMethod {
 		numDontcares = input.nextInt();
 		dontcares = new int[numDontcares];
 		
-		System.out.println("don't care을 입력하세요: ");
+		System.out.println("don't care(0~15 사이)을 입력하세요: ");
 		for(int i=0;i<numDontcares;i++) {
 			dontcares[i] = input.nextInt();
 		}
@@ -35,7 +35,7 @@ public class TabularMethod {
 		binTerms = new int[numMinterms + numDontcares][3][]; //[[minterm인지 dontcare인지를 나타내는 0 또는 1의 값,[이진수],1의 개수]]
 		
 		for(int i=0;i<numMinterms;i++) {
-			int[] bin = new int[4];
+			int[] bin = new int[4]; //4 variables
 			int idx = 3;
 			int numOne = 0;
 			int decTerm = minterms[i];
