@@ -29,21 +29,21 @@ public class TabularMethod {
 	}
 	
 	public void setBinTerms() {
-		int[] m = {1}; //같은 2차원 배열에 들어있는 배열이 minterm의 이진수값을 나타냄을 알려줌
-		int[] d = {0}; //같은 2차원 배열에 들어있는 배열이 dontcare의 이진수값을 나타냄을 알려줌
-		int[] numOfOne = new int[1];
+		int[] m = {1}; //bin이 minterm의 이진수값을 나타냄을 알려줌
+		int[] d = {0}; //bin이 dontcare의 이진수값을 나타냄을 알려줌
+		int[] numOfOne = new int[1]; //bin에 들어있는 1의 개수를 나타
 		binTerms = new int[numMinterms + numDontcares][3][]; //[[m or d, bin, numOfOne]]
 		
 		for(int i=0;i<numMinterms;i++) {
 			int[] bin = new int[4]; //4 variables
-			int idx = 3;
-			int numOne = 0;
+			int idx = 3; //이진수 저장을 위한 인덱스
+			int numOne = 0; //term의 이진수의 1의 개수
 			int decTerm = minterms[i];
 			
 			while(decTerm > 0) { //bin배열에 minterms[i] 이진수 표현 저장.
 				bin[idx] = decTerm%2; 
 				if(bin[idx] == 1) {
-					numOne++; //term의 이진수의 1의 개수
+					numOne++; 
 				}
 				decTerm /= 2;
 				idx--;
