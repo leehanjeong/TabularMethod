@@ -9,30 +9,30 @@ public class TabularMethod {
 	public void inputTerms() {
 		Scanner input = new Scanner(System.in);
 		
-		System.out.println("mintermÀÇ °¹¼ö¸¦ ÀÔ·ÂÇÏ¼¼¿ä: ");
+		System.out.println("mintermì˜ ê°œìˆ˜ë¥¼ ì…ë ¥í•˜ì„¸ìš”: ");
 		numMinterms = input.nextInt();
 		minterms = new int[numMinterms];
 		
-		System.out.println("mintermÀ» ÀÔ·ÂÇÏ¼¼¿ä: ");
+		System.out.println("mintermì„ ì…ë ¥í•˜ì„¸ìš”: ");
 		for(int i=0;i<numMinterms;i++) {
 			minterms[i] = input.nextInt();
 		}
 		
-		System.out.println("don't careÀÇ °¹¼ö¸¦ ÀÔ·ÂÇÏ¼¼¿ä: ");
+		System.out.println("don't careì˜ ê°œìˆ˜ë¥¼ ì…ë ¥í•˜ì„¸ìš”: ");
 		numDontcares = input.nextInt();
 		dontcares = new int[numDontcares];
 		
-		System.out.println("don't careÀ» ÀÔ·ÂÇÏ¼¼¿ä: ");
+		System.out.println("don't careì„ ì…ë ¥í•˜ì„¸ìš”: ");
 		for(int i=0;i<numDontcares;i++) {
 			dontcares[i] = input.nextInt();
 		}
 	}
 	
 	public void setBinTerms() {
-		int[] m = {1}; //°°Àº 2Â÷¿ø ¹è¿­¿¡ µé¾îÀÖ´Â ¹è¿­ÀÌ mintermÀÇ ÀÌÁø¼ö°ªÀ» ³ªÅ¸³¿À» ¾Ë·ÁÁÜ
-		int[] d = {0}; //°°Àº 2Â÷¿ø ¹è¿­¿¡ µé¾îÀÖ´Â ¹è¿­ÀÌ dontcareÀÇ ÀÌÁø¼ö°ªÀ» ³ªÅ¸³¿À» ¾Ë·ÁÁÜ
+		int[] m = {1}; //ê°™ì€ 2ì°¨ì› ë°°ì—´ì— ë“¤ì–´ìˆëŠ” ë°°ì—´ì´ mintermì˜ ì´ì§„ìˆ˜ê°’ì„ ë‚˜íƒ€ëƒ„ì„ ì•Œë ¤ì¤Œ
+		int[] d = {0}; //ê°™ì€ 2ì°¨ì› ë°°ì—´ì— ë“¤ì–´ìˆëŠ” ë°°ì—´ì´ dontcareì˜ ì´ì§„ìˆ˜ê°’ì„ ë‚˜íƒ€ëƒ„ì„ ì•Œë ¤ì¤Œ
 		int[] numOfOne = new int[1];
-		binTerms = new int[numMinterms + numDontcares][3][]; //[[mintermÀÎÁö dontcareÀÎÁö¸¦ ³ªÅ¸³»´Â 0 ¶Ç´Â 1ÀÇ °ª,[ÀÌÁø¼ö],1ÀÇ °³¼ö]]
+		binTerms = new int[numMinterms + numDontcares][3][]; //[[mintermì¸ì§€ dontcareì¸ì§€ë¥¼ ë‚˜íƒ€ë‚´ëŠ” 0 ë˜ëŠ” 1ì˜ ê°’,[ì´ì§„ìˆ˜],1ì˜ ê°œìˆ˜]]
 		
 		for(int i=0;i<numMinterms;i++) {
 			int[] bin = new int[4];
@@ -40,16 +40,16 @@ public class TabularMethod {
 			int numOne = 0;
 			int decTerm = minterms[i];
 			
-			while(decTerm > 0) { //bin¹è¿­¿¡ minterms[i] ÀÌÁø¼ö Ç¥Çö ÀúÀå.
+			while(decTerm > 0) { //binë°°ì—´ì— minterms[i] ì´ì§„ìˆ˜ í‘œí˜„ ì €ì¥.
 				bin[idx] = decTerm%2; 
 				if(bin[idx] == 1) {
-					numOne++; //termÀÇ ÀÌÁø¼öÀÇ 1ÀÇ °³¼ö
+					numOne++; //termì˜ ì´ì§„ìˆ˜ì˜ 1ì˜ ê°œìˆ˜
 				}
 				decTerm /= 2;
 				idx--;
 			}
 			while(idx >= 0) {
-				bin[idx] = 0; //³²Àº 2Áø¼ö ¾ÕÀÚ¸® 0À¸·Î Ã¤¿öÁÜ
+				bin[idx] = 0; //ë‚¨ì€ 2ì§„ìˆ˜ ì•ìë¦¬ 0ìœ¼ë¡œ ì±„ì›Œì¤Œ
 				idx--;
 			}
 			numOfOne[0] = numOne;
